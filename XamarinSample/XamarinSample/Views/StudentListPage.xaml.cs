@@ -1,18 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace XamarinSample.Views
 {
+    using XamarinSample.ViewModels;
+
+    /// <summary>
+    /// The student list page.
+    /// </summary>
     public partial class StudentListPage : ContentPage
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StudentListPage"/> class.
+        /// </summary>
         public StudentListPage()
         {
             InitializeComponent();
+            BindingContext = new StudentListViewModel();
         }
     }
 }
