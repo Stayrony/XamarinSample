@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinSample.Views.LoginPage"
+             Title="Login Page">
+  <StackLayout Spacing="20" Padding="20"
+             VerticalOptions="Center">
+    <Entry Placeholder="Login"
+           Text="{Binding Login}"/>
+    <Entry Placeholder="Password"
+           Text="{Binding Password}"
+           IsPassword="true"/>
+    <Button Text="Login" TextColor="White"
+            BackgroundColor="#fc4d7d"
+            Command="{Binding LoginCommand}"/>
+  </StackLayout>
+</ContentPage>
