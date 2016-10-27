@@ -15,12 +15,26 @@ namespace XamarinSample.Droid.Services
 {
     using XamarinSample.Contract;
     using XamarinSample.Models;
+    using XamarinSample.Service.DAL;
 
     /// <summary>
     /// The authorization service.
     /// </summary>
     public class AuthorizationService : IAuthorizationService
     {
+        /// <summary>
+        /// The _member data manager.
+        /// </summary>
+        private IMemberDataManager _memberDataManager;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AuthorizationService"/> class.
+        /// </summary>
+        public AuthorizationService()
+        {
+            this._memberDataManager = DalManagerFactory.CreateMemberDataManager("stub");
+        }
+
         /// <summary>
         /// The login.
         /// </summary>
@@ -32,11 +46,34 @@ namespace XamarinSample.Droid.Services
         /// </returns>
         public bool Login(Member memberInfo)
         {
-            if (memberInfo.Login == "dev" && memberInfo.Password == "dev")
+
+            Member member = this.GetMemberOnLogin(memberInfo.Login);
+            if (member != null)
             {
-                return true;
+                if (memberInfo.Password == member.Password)
+                {
+                    return true;
+                }
+
             }
+
             return false;
         }
+
+        /// <summary>
+        /// The get member on login.
+        /// </summary>
+        /// <param name="login">
+        /// The login.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Member"/>.
+        /// </returns>
+        private Member GetMemberOnLogin(string login)
+        {
+            Member member = this._memberDataManager.GetMemberOnLoginFromDB(login);
+            return member;
+        }
+
     }
 }
