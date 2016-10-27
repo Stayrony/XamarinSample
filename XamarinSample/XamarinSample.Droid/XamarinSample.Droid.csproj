@@ -137,6 +137,10 @@
     <AndroidResource Include="Resources\values\styles.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\XamarinSample.Service.DAL\XamarinSample.Service.DAL.csproj">
+      <Project>{4CD5E07A-E483-4E39-9308-606C96F68F79}</Project>
+      <Name>XamarinSample.Service.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XamarinSample\XamarinSample.csproj">
       <Project>{2d7f3279-1a26-4669-b539-76b4f95c17fa}</Project>
       <Name>XamarinSample</Name>
